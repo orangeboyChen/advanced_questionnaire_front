@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "components/navigationBar/navigationBar",
+    "pages/forum/forum",
+    "pages/home/home"
+  ],
+  "window": {
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "selectedColor": "#CD5C5C",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/static/tabbar/home.png",
+        "selectedIconPath": "/static/tabbar/home0.png"
+      },
+      {
+        "pagePath": "pages/forum/forum",
+        "text": "社区",
+        "iconPath": "/static/tabbar/forum.png",
+        "selectedIconPath": "/static/tabbar/forum0.png"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "我的",
+        "iconPath": "/static/tabbar/my.png",
+        "selectedIconPath": "/static/tabbar/my0.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

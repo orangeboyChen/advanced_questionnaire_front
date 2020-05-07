@@ -1,0 +1,13 @@
+<view class="main">
+  <view class="user">
+    <view class="user_avartor">
+      <image src=""></image>
+    </view>
+    <view class="user_detail">
+      <view class="user_name">
+          <view class="">    </view>
+      </view>
+      <view class=""></view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,128 @@
+.top{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+}
+.top_bkcolor{
+  background:#ffe027;
+  height:170rpx;
+  position: relative;
+  width:100%;
+  
+}
+.top_credit{
+  position: absolute;
+  top:50rpx;
+  left:10rpx;
+  right:10rpx;
+  /*padding-top:30rpx;*/
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  
+
+}
+.top_credit image{
+  width:90%; 
+  border-radius: 20rpx;
+}
+
+.question_wrap{
+  margin-top:150rpx;
+  padding: 15rpx 10rpx;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.question_item{
+  width:90%;
+  margin-bottom: 20rpx;
+  padding:0 ;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-style: solid;
+  box-shadow:2rpx 2rpx 2rpx 2rpx #DDDDDD;
+  border-width: 0rpx;
+  border-radius: 17rpx;
+}
+.question_img{
+  width:100%;
+}
+.question_img image{
+  width:100%;
+}
+.question_info{
+  width:93%;
+  padding:0 10rpx 30rpx 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+.question_first{
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
+  align-items: center;
+}
+.question_title{
+  flex:7.5;
+}
+.question_title .title{
+  color:#55459c;
+  
+  font-size: 28rpx;
+  font-weight:bold;
+
+}
+.question_classify{
+  flex:2.5;
+  background: #ffe027;
+  font-size: 24rpx;
+  text-align:center;
+  color:#666;
+  border-radius: 30rpx;
+  padding:4rpx 10rpx;
+  
+
+}
+.question_num{
+  flex:2;
+  color:red;
+  font-size: 24rpx;
+  font-weight:bold;
+  text-align:right;
+}
+.question_second{
+  display: flex;
+  flex-direction:row;
+  padding-top: 6rpx;
+  justify-content: space-between;
+  align-items:baseline;
+}
+.question_subtitle{
+  flex:7;
+  font-size: 20rpx;
+  color:#666;
+  
+  
+}
+
+.question_join{
+  flex:4;
+ 
+  text-align:right;
+}
+.question_join image{
+  width:30rpx;
+  padding-inline-end: 15rpx;
+  text-align:right;
+}
+.question_join text{
+  font-size: 20rpx;
+  text-align:right;
+}

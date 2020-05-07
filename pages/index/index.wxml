@@ -1,0 +1,48 @@
+<!--index.wxml-->
+<navigationBar default-data="{{defaultData}}"></navigationBar>
+ <!--正文-->
+ <view class="main">
+   <!--积分-->
+    <view class="top">
+      <view class="top_bkcolor">
+       
+      
+      <view class="top_credit">
+        <image src="../../static/index_img/credit_03.gif" mode="widthFix"></image>
+      </view>
+      </view>
+    </view>
+
+    <!--项目-->
+    <view class="question_wrap">
+      <view wx:for="{{questionList}}" wx:key="{{index}}" class="question_item">
+          <view class="question_img">
+          <image mode="widthFix" src="{{item.img}}"></image>
+        </view> 
+        <view class="question_info">
+          <!--第一层-->
+          <view class="question_first">
+            <view class="question_title">
+              <text class="title">{{item.title}}</text>
+            </view>
+            <view class="question_classify">
+                <text>{{item.classify}}</text>
+            </view>
+            <view class="question_num">
+                <text>{{item.credit_num}}积分</text>
+            </view>
+          </view>
+          <!--第二层-->
+          <view class="question_second">
+              <view class="question_subtitle">
+                <text>{{item.subtitle}}</text>
+              </view>
+              <view class="question_join">
+              <image  mode="widthFix" src="../../static/index_img/hand.png"></image>
+              <text class="people">{{item.people}}人发表态度</text>
+              </view>
+          </view>
+        </view>
+      </view>
+    </view>
+ </view>
