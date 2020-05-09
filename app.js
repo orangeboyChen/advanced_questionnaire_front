@@ -1,28 +1,38 @@
 //app.js
 App({
   onLaunch: function () {
-    const that = this;
-    
-    // 获取系统信息
-    const systemInfo = wx.getSystemInfoSync();
-    // 胶囊按钮位置信息
-    const menuButtonInfo = wx.getMenuButtonBoundingClientRect();
-    // 导航栏高度 = 状态栏到胶囊的间距（胶囊距上距离-状态栏高度） * 2 + 胶囊高度 + 状态栏高度
-    that.globalData.navBarHeight = (menuButtonInfo.top - systemInfo.statusBarHeight) * 2 + menuButtonInfo.height + systemInfo.statusBarHeight;
-    that.globalData.menuRight = systemInfo.screenWidth - menuButtonInfo.right;
-    that.globalData.menuBotton = menuButtonInfo.top - systemInfo.statusBarHeight;
-    that.globalData.menuHeight = menuButtonInfo.height;
-    that.globalData.menuTop = menuButtonInfo.top;
-
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
+
     // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        var reqTask = wx.request({
+          url: getApp().globalData.host + '/login?code=' + res.code,
+          data: {},
+          header: {'content-type':'application/json'},
+          method: 'GET',
+          dataType: 'json',
+          responseType: 'text',
+          success: (result)=>{
+            console.log(result.data.data);
+            console.log(result.data.data.sessionId);
+            getApp().globalData.header.cookie = 'JSESSIONID=' + result.data.data.sessionId;
+          },
+          fail: ()=>{
+            console.log('fail');
+
+          },
+          complete: ()=>{
+            console.log('complete');
+
+          }
+        });
+
       }
     })
     // 获取用户信息
@@ -32,6 +42,26 @@ App({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
+              console.log(res);
+              
+              let header = getApp().globalData.header;
+              console.log(header)
+              var reqTask = wx.request({
+                url: getApp().globalData.host + '/login/userInfo',
+                data: {
+                  avatarUrl: res.userInfo.avatarUrl,
+                  nickName: res.userInfo.nickName,
+                  gender: res.userInfo.gender
+                },
+                dataType: 'json',
+                header: header,
+                method: 'POST',
+                success: (result)=>{
+                  console.log(result);
+                },
+                fail: ()=>{},
+                complete: ()=>{}
+              });
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
 
@@ -48,10 +78,10 @@ App({
   },
   globalData: {
     userInfo: null,
-    navBarHeight: 0, // 导航栏高度
-    menuRight: 0, // 胶囊距右方间距（方保持左、右间距一致）
-    menuBotton: 0, // 胶囊距底部间距（保持底部间距一致）
-    menuHeight: 0, // 胶囊高度（自定义内容可与胶囊高度保证一致）;
-    menuTop : 0
+    header: {
+      'cookie': '',
+      'content-type':'application/x-www-form-urlencoded'
+    },
+    host: 'https://api.wxques.nowcent.cn'
   }
 })

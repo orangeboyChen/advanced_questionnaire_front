@@ -52,7 +52,13 @@ Page({
     ]
 
   },
+
+  
   onLoad() {
-    console.log(this.data.height)
-  }
+
+  },
+
+  
+
+
 })
