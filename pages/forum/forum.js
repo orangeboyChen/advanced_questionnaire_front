@@ -62,5 +62,26 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  getUserInfo(e){
+    console.log(e.detail);
+    let res = e.detail;
+    let header = getApp().globalData.header;
+    var reqTask = wx.request({
+      url: getApp().globalData.host + '/login/userInfo',
+      data: {
+        avatarUrl: res.userInfo.avatarUrl,
+        nickName: res.userInfo.nickName,
+        gender: res.userInfo.gender
+      },
+      dataType: 'json',
+      header: header,
+      method: 'POST',
+      success: (result)=>{
+        console.log(result);
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
   }
 })

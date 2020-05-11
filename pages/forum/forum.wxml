@@ -1,2 +1,3 @@
 <!--pages/forum/forum.wxml-->
 <text>pages/forum/forum.wxml</text>
+<button open-type="getUserInfo" bindgetuserinfo="getUserInfo">点我授权</button>

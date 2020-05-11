@@ -22,20 +22,22 @@ App({
             console.log(result.data.data);
             console.log(result.data.data.sessionId);
             getApp().globalData.header.cookie = 'JSESSIONID=' + result.data.data.sessionId;
+            this.getInfo();
           },
           fail: ()=>{
-            console.log('fail');
 
           },
           complete: ()=>{
-            console.log('complete');
 
           }
         });
 
       }
-    })
+    });
     // 获取用户信息
+
+  },
+  getInfo(){
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
@@ -43,10 +45,9 @@ App({
           wx.getUserInfo({
             success: res => {
               console.log(res);
-              
               let header = getApp().globalData.header;
               console.log(header)
-              var reqTask = wx.request({
+              wx.request({
                 url: getApp().globalData.host + '/login/userInfo',
                 data: {
                   avatarUrl: res.userInfo.avatarUrl,
@@ -57,7 +58,7 @@ App({
                 header: header,
                 method: 'POST',
                 success: (result)=>{
-                  console.log(result);
+                  console.log(result.data);
                 },
                 fail: ()=>{},
                 complete: ()=>{}
@@ -73,6 +74,13 @@ App({
             }
           })
         }
+        else{
+          console.log("失败");
+          console.log(res);
+        }
+      },
+      fail: res => {
+        console.log(res);
       }
     })
   },
@@ -83,5 +91,6 @@ App({
       'content-type':'application/x-www-form-urlencoded'
     },
     host: 'https://api.wxques.nowcent.cn'
+    // host: 'http://localhost:9898'
   }
 })

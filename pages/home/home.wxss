@@ -1,1 +1,58 @@
 /* pages/home/home.wxss */
+
+.user_avartar{
+  overflow:hidden;
+  display: block;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+
+
+}
+
+.user_basic{
+    display: flex;
+    margin-top: 60px;
+    margin-left: 30px;
+    
+
+
+}
+
+.user_name{
+    margin-left: 10px;
+    font-size: larger;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.my_detail_table{
+    display: table;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    padding-top: 50px;
+    
+}
+
+.my_detail_cell{
+    display: inline-block;
+    margin: 5px;
+    width: 40%;
+
+}
+
+.my_score{
+    display: inline-block;
+    margin: 0px;
+    width: 82.5%;
+
+}
+
+.btn{
+    font-size: smaller;
+    padding: 5px;
+}
