@@ -65,8 +65,15 @@ Page({
   },
 
   search: function(keyword){
+    let realKeyword = keyword.detail;
+
+    if(keyword.detail.value != undefined){
+      realKeyword = keyword.detail.value;
+    }
+
+    console.log(realKeyword);
     this.setData({
-      searchKeyword: keyword,
+      searchKeyword: realKeyword,
       searchPage: 0,
       isSearchEnd: false
     });
@@ -74,12 +81,6 @@ Page({
     wx.pageScrollTo({
       scrollTop: 0
     });
-
-    let realKeyword = keyword.detail;
-
-    if(keyword.detail.value != null){
-      realKeyword = keyword.detail.value;
-    }
 
     let rawUrl = getApp().globalData.host + '/search/basic?keyword=' + realKeyword + '&from=' + this.data.searchPage + '&size=' + this.data.searchPageSize;
     console.log(rawUrl);
@@ -108,7 +109,8 @@ Page({
   
   onReachBottom: function(){
     if(this.data.isSearchEnd === false){
-      let rawUrl = getApp().globalData.host + '/search/basic?keyword=' + this.data.searchKeyword.detail + '&from=' + (this.data.searchPage * this.data.searchPageSize - 1) + '&size=' + this.data.searchPageSize;
+      console.log(this.data.searchKeyword);
+      let rawUrl = getApp().globalData.host + '/search/basic?keyword=' + this.data.searchKeyword + '&from=' + (this.data.searchPage * this.data.searchPageSize - 1) + '&size=' + this.data.searchPageSize;
       console.log(rawUrl);
       wx.request({
         url: encodeURI(rawUrl),
