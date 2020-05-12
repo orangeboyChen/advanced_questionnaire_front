@@ -15,9 +15,9 @@
 
     <!--项目-->
     <view class="question_wrap">
-        <view wx:for="{{questionList}}" wx:key="{{index}}" wx:if="{{questionList.length !== 0}}" class="question_item">
+        <view wx:for="{{questionList}}" wx:key="index" wx:if="{{questionList.length !== 0}}" class="question_item">
           <view class="question_img">
-          <image mode="widthFix" src="{{item.img}}"></image>
+          <image mode="widthFix" src="{{img}}"></image>
         </view> 
         <view class="question_info">
           <!--第一层-->

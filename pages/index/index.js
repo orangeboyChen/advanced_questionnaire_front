@@ -5,6 +5,7 @@ Page({
     defaultData: {
       title: "我的主页", // 导航栏标题
     },
+    img: "../../static/index_img/question01.png",
     questionList:[
       {
         img:"../../static/index_img/question01.png",
@@ -52,7 +53,7 @@ Page({
     ],
     searchKeyword: '',
     searchPage: 0,
-    searchPageSize: 2,
+    searchPageSize: 5,
     isSearchEnd: false,
     searchTip: null
 
@@ -74,7 +75,14 @@ Page({
       scrollTop: 0
     });
 
-    let rawUrl = getApp().globalData.host + '/search/basic?keyword=' + keyword.detail + '&from=' + this.data.searchPage + '&size=' + this.data.searchPageSize;
+    let realKeyword = keyword.detail;
+
+    if(keyword.detail.value != null){
+      realKeyword = keyword.detail.value;
+    }
+
+    let rawUrl = getApp().globalData.host + '/search/basic?keyword=' + realKeyword + '&from=' + this.data.searchPage + '&size=' + this.data.searchPageSize;
+    console.log(rawUrl);
     wx.request({
       url: encodeURI(rawUrl),
       data: {},

@@ -29,6 +29,7 @@ Component({
       this.setData({
         searchKeyword: e.detail.value
       });
+      console.log('search()=>' + e.detail.value);
       this.searchWatching();
     },
 
@@ -36,8 +37,17 @@ Component({
       clearTimeout(timer);
       let that = this;
       timer = setTimeout(function(){
+        console.log('watching()=>' + that.data.searchKeyword);
         that.triggerEvent('search', that.data.searchKeyword);
       }, 500);
+    },
+
+    searchBlur: function(e){
+      console.log('blur()=>' + e.detail.value);
+      if(e.detail.value !== this.data.searchKeyword){
+        clearTimeout(timer);
+        this.triggerEvent('search', e.detail.value);
+      }
     }
     }
 

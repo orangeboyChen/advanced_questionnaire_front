@@ -24,7 +24,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.11.0",
+	"libVersion": "2.10.4",
 	"appid": "wx8747fa1dbc30f5c4",
 	"projectname": "test",
 	"debugOptions": {
