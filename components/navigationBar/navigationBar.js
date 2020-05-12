@@ -1,4 +1,5 @@
 const app = getApp()
+let timer;
 Component({
   properties: {
     // defaultData（父页面传递的数据-就是引用组件的页面）
@@ -19,7 +20,6 @@ Component({
     menuTop: wx.getMenuButtonBoundingClientRect().top,
 
     searchKeyword: '',
-    searchResult: null
   },
   attached: function () { 
   
@@ -28,30 +28,17 @@ Component({
     search: function(e){
       this.setData({
         searchKeyword: e.detail.value
-      })
-      let rawUrl = getApp().globalData.host + '/search/basic?keyword=' + this.data.searchKeyword + "&from=0&size=5";
-      wx.request({
-        url: encodeURI(rawUrl),
-        data: {},
-        header: {'content-type':'application/json'},
-        method: 'GET',
-        dataType: 'json',
-        responseType: 'text',
-        success: (result)=>{
-          console.log(result.data.data);
-          this.setData({
-            searchResult: result.data.data
-          });
-          this.triggerEvent('showResult', result.data.data);
-        },
-        fail: ()=>{},
-        complete: ()=>{}
       });
+      this.searchWatching();
     },
-    },
-    conveyData: function(){
 
+    searchWatching: function(){
+      clearTimeout(timer);
+      let that = this;
+      timer = setTimeout(function(){
+        that.triggerEvent('search', that.data.searchKeyword);
+      }, 500);
     }
-
+    }
 
 })

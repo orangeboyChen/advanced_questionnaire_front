@@ -36,7 +36,7 @@
   align-items: center;
 }
 .question_item{
-  width:90%;
+  width:100%;
   margin-bottom: 20rpx;
   padding:0 ;
   display: flex;

@@ -49,7 +49,12 @@ Page({
         people: "50"
       }
 
-    ]
+    ],
+    searchKeyword: '',
+    searchPage: 0,
+    searchPageSize: 2,
+    isSearchEnd: false,
+    searchTip: null
 
   },
 
@@ -58,11 +63,69 @@ Page({
 
   },
 
-  showResult: function(result){
-    console.log(result);
+  search: function(keyword){
     this.setData({
-      questionList: result.detail.content
-    })
+      searchKeyword: keyword,
+      searchPage: 0,
+      isSearchEnd: false
+    });
+
+    wx.pageScrollTo({
+      scrollTop: 0
+    });
+
+    let rawUrl = getApp().globalData.host + '/search/basic?keyword=' + keyword.detail + '&from=' + this.data.searchPage + '&size=' + this.data.searchPageSize;
+    wx.request({
+      url: encodeURI(rawUrl),
+      data: {},
+      header: {'content-type':'application/json'},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result)=>{
+        this.setData({
+          questionList: result.data.data.content,
+          searchPage: 1
+        });
+        if(result.data.data.content.length < this.data.searchPageSize){
+          this.setData({
+            isSearchEnd: true
+          });
+        }
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  },
+  
+  onReachBottom: function(){
+    if(this.data.isSearchEnd === false){
+      let rawUrl = getApp().globalData.host + '/search/basic?keyword=' + this.data.searchKeyword.detail + '&from=' + (this.data.searchPage * this.data.searchPageSize - 1) + '&size=' + this.data.searchPageSize;
+      console.log(rawUrl);
+      wx.request({
+        url: encodeURI(rawUrl),
+        data: {},
+        header: {'content-type':'application/json'},
+        method: 'GET',
+        dataType: 'json',
+        responseType: 'text',
+        success: (result)=>{
+          this.setData({
+            questionList: this.data.questionList.concat(result.data.data.content),
+            searchPage: this.data.searchPage + 1
+          });
+
+          if(result.data.data.content.length < this.data.searchPageSize){
+            this.setData({
+              isSearchEnd: true,
+              searchTip: '到底部啦'
+            });
+          }
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+      });      
+    }
   }
 
   

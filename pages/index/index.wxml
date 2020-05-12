@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<navigationBar default-data="{{defaultData}}" bind:showResult="showResult"></navigationBar>
+<navigationBar default-data="{{defaultData}}" bind:search="search"></navigationBar>
  <!--正文-->
  <view class="main">
    <!--积分-->
@@ -15,7 +15,7 @@
 
     <!--项目-->
     <view class="question_wrap">
-      <view wx:for="{{questionList}}" wx:key="{{index}}" class="question_item">
+        <view wx:for="{{questionList}}" wx:key="{{index}}" wx:if="{{questionList.length !== 0}}" class="question_item">
           <view class="question_img">
           <image mode="widthFix" src="{{item.img}}"></image>
         </view> 
@@ -38,11 +38,17 @@
                 <text>{{item.subtitle}}</text>
               </view>
               <view class="question_join">
-              <image  mode="widthFix" src="../../static/index_img/hand.png"></image>
-              <text class="people">{{item.view}}人发表态度</text>
+                <image  mode="widthFix" src="../../static/index_img/hand.png"></image>
+                <text class="people">{{item.view}}人发表态度</text>
               </view>
           </view>
         </view>
       </view>
+      <view wx:if="{{questionList.length === 0}}">
+        <text>未搜索到问卷</text>
+      </view>
+    </view>
+    <view  style="text-align: center;">
+       <text wx:if="{{isSearchEnd === true && questionList.length !== 0}}">{{searchTip}}</text>
     </view>
  </view>
