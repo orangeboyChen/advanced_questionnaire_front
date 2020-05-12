@@ -12,19 +12,20 @@ Component({
   },
   data: {
     navBarHeight: app.globalData.navBarHeight,
-    menuRight: app.globalData.menuRight,
+    menuRight: wx.getSystemInfoSync().windowWidth - wx.getMenuButtonBoundingClientRect().left + 60,
     menuBotton: app.globalData.menuBotton,
-    menuHeight: app.globalData.menuHeight,
+    menuHeight: wx.getMenuButtonBoundingClientRect().height,
     extraHeight:20,
-    menuTop: app.globalData.menuTop,
+    menuTop: wx.getMenuButtonBoundingClientRect().top,
 
-    searchKeyword: ''
+    searchKeyword: '',
+    searchResult: null
   },
   attached: function () { 
   
   },
   methods: {
-    search(e){
+    search: function(e){
       this.setData({
         searchKeyword: e.detail.value
       })
@@ -38,10 +39,19 @@ Component({
         responseType: 'text',
         success: (result)=>{
           console.log(result.data.data);
+          this.setData({
+            searchResult: result.data.data
+          });
+          this.triggerEvent('showResult', result.data.data);
         },
         fail: ()=>{},
         complete: ()=>{}
       });
+    },
+    },
+    conveyData: function(){
+
     }
-    }
+
+
 })

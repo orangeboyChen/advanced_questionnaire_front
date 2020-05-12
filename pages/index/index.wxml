@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<navigationBar default-data="{{defaultData}}"></navigationBar>
+<navigationBar default-data="{{defaultData}}" bind:showResult="showResult"></navigationBar>
  <!--正文-->
  <view class="main">
    <!--积分-->
@@ -26,7 +26,7 @@
               <text class="title">{{item.title}}</text>
             </view>
             <view class="question_classify">
-                <text>{{item.classify}}</text>
+                <text>{{item.typeName}}</text>
             </view>
             <view class="question_num">
                 <text>{{item.credit_num}}积分</text>
@@ -39,7 +39,7 @@
               </view>
               <view class="question_join">
               <image  mode="widthFix" src="../../static/index_img/hand.png"></image>
-              <text class="people">{{item.people}}人发表态度</text>
+              <text class="people">{{item.view}}人发表态度</text>
               </view>
           </view>
         </view>

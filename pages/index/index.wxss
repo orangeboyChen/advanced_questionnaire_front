@@ -12,8 +12,7 @@
   
 }
 .top_credit{
-  position: absolute;
-  top:50rpx;
+  position: relative;
   left:10rpx;
   right:10rpx;
   /*padding-top:30rpx;*/
@@ -29,7 +28,7 @@
 }
 
 .question_wrap{
-  margin-top:150rpx;
+  margin-top:90rpx;
   padding: 15rpx 10rpx;
   display:flex;
   flex-direction: column;

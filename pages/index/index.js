@@ -58,6 +58,13 @@ Page({
 
   },
 
+  showResult: function(result){
+    console.log(result);
+    this.setData({
+      questionList: result.detail.content
+    })
+  }
+
   
 
 

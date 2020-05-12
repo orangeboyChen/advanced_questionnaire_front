@@ -1,2 +1,27 @@
-.nav-bar{ z-index: 100;position: fixed; width: 100%; top: 0; color: #fff; background: #ffe027;}
-.nav-bar .search{ width: 60%; color: #333; font-size: 14px; background: #fff; position: absolute; border-radius: 50px; padding-left: 14px;}
+.nav-bar{ 
+    padding-left: 50rpx;
+    padding-bottom: 30rpx;
+    z-index: 100;
+    color: #fff; 
+    background: #ffe027;
+    width: 100%;
+    top: 0px;
+}
+
+.nav-bar .search{ 
+    color: #333; 
+    font-size: 14px; 
+    background: #fff; 
+    border-radius: 50px; 
+    padding-left: 14px;
+}
+
+.search{
+    z-index: 101;
+}
+
+.father-view{
+    position: sticky;
+    top: 0px;
+    z-index: 102;
+}

@@ -6,6 +6,9 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
+    let topObject = wx.getMenuButtonBoundingClientRect();
+    console.log(topObject);
+
 
     // 登录
     wx.login({
@@ -34,6 +37,7 @@ App({
 
       }
     });
+
     // 获取用户信息
 
   },
@@ -90,7 +94,8 @@ App({
       'cookie': '',
       'content-type':'application/x-www-form-urlencoded'
     },
-    host: 'https://api.wxques.nowcent.cn'
+    host: 'https://api.wxques.nowcent.cn',
     // host: 'http://localhost:9898'
+    menuTop: 0
   }
 })
