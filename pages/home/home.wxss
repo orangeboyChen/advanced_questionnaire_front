@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /* pages/home/home.wxss */
 
 .user_avartar{
@@ -55,4 +56,93 @@
 .btn{
     font-size: smaller;
     padding: 5px;
+=======
+.main{
+  padding-top: 150rpx;
+  /*background:#ffe027;*/
+  margin-left:50rpx;
+  margin-right: 80rpx;
+  
+
+}
+.user{
+  display: flex;
+  align-items:center;
+}
+.user_avartor{
+  width:40%;
+  overflow: hidden;
+  margin: 20rpx 0 0 20rpx;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;  
+}
+.user_detail{
+  width:70%;
+  display: flex;
+  flex-direction:column;
+  align-items:flex-start;
+  margin-left: 35rpx;
+}
+.user_name{
+  font-size: 50rpx;
+  word-break:break-all;
+   margin-bottom: 10rpx;
+
+}
+.user_question{
+  font-size: 26rpx;
+}
+.user_credit{
+  font-size: 26rpx;
+}
+
+.credit{
+  margin-top:100rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: solid 1rpx #666;
+  margin-left:20rpx;
+  border-radius: 20rpx;
+  padding: 30rpx;
+}
+.credit_icon image{
+  width:80rpx;
+
+}
+.credit_content{
+  font-weight: lighter;
+}
+.feature{
+  margin-left:20rpx;
+  margin-top: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap:wrap;
+  
+}
+.questionnaire{
+  width:37%; 
+  border-radius: 30rpx;
+  padding:40rpx 30rpx;
+  text-align:center;
+  background: #23d6c0;
+}
+.star{
+  width:37%;
+  border-radius: 30rpx;
+  padding:40rpx 30rpx;
+  text-align:center;
+  background: #ffbf2a;
+}
+.history{
+  width:37%;
+
+  border-radius: 30rpx;
+  padding:40rpx 30rpx;
+  text-align:center;
+  margin-top: 30rpx;
+  background: #55b6ec;
+>>>>>>> Stashed changes
 }

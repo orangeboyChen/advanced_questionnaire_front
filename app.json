@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/index/index",
-    "pages/logs/logs",
     "components/navigationBar/navigationBar",
-    "pages/forum/forum",
-    "pages/home/home"
+    "pages/forum/forum"
+    
   ],
   "window": {
     "navigationStyle": "custom"

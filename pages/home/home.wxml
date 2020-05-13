@@ -1,5 +1,7 @@
 <view class="main">
+<!--用户-->
   <view class="user">
+<<<<<<< Updated upstream
     <view class="user_basic">
       <view class="user_avartar">
         <open-data type="userAvatarUrl"/>
@@ -7,6 +9,47 @@
       <view class="user_name">
         <open-data type="userNickName"/>
       </view>
+=======
+    <!--用户头像-->
+    <view class="user_avartor">
+    <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <!--用户信息-->
+    <view class="user_detail">
+      <!--用户名字-->
+      <view class="user_name">
+        <text>mooncrash</text>
+      </view>
+      <!--用户填写次数-->
+      <view class="user_question">
+        您已完成问卷填写次
+      </view>
+      <view class="user_credit">累计收获积分</view>
+    </view>
+  </view>
+  <!--积分-->
+  <view class="credit">
+    <view class="credit_icon">
+      <image src="../../static/crown.png" mode="widthFix"></image>
+    </view>
+    <view class="credit_content">
+      <text>点击查看积分详情</text>
+    </view>
+  </view>
+  <!--功能分区-->
+  <view class="feature">
+    <!--个人问卷-->
+    <view class="questionnaire">
+      <text>个人问卷</text>
+    </view>
+    <!--收藏浏览-->
+    <view class="star">
+      <text>收藏浏览</text>
+    </view>
+    <!--历史浏览-->
+    <view class="history">
+      <text>历史浏览</text>
+>>>>>>> Stashed changes
     </view>
   </view>
 

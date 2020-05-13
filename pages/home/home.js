@@ -5,14 +5,33 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    name: "",
+    path: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getUserName();
+  },
+  /*获取用户信息并复制给data字典的函数 */
+  getUserName: function () {
+    var that = this;
+    /*wx.openSetting({});*/
+    wx.getUserInfo({
+      success: function (res) {
+        console.log('success', res)
+        that.setData({
+          name: res.userInfo.nickName,
+          path: res.userInfo.avatarUrl
 
+        })
+      },
+      fail: function (res) {
+        console.log('fail', res)
+      }
+    })
   },
 
   /**
